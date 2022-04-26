@@ -1,0 +1,6 @@
+C:\Users\Anatoly\source\repos\Tools\Editor\obj\Debug\net5.0-windows\Editor.csproj.AssemblyReference.cache
+C:\Users\Anatoly\source\repos\Tools\Editor\obj\Debug\net5.0-windows\Editor.g.resources
+C:\Users\Anatoly\source\repos\Tools\Editor\obj\Debug\net5.0-windows\Editor.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Anatoly\source\repos\Tools\Editor\obj\Debug\net5.0-windows\Editor.AssemblyInfoInputs.cache
+C:\Users\Anatoly\source\repos\Tools\Editor\obj\Debug\net5.0-windows\Editor.AssemblyInfo.cs
+C:\Users\Anatoly\source\repos\Tools\Editor\obj\Debug\net5.0-windows\Editor.csproj.CoreCompileInputs.cache
