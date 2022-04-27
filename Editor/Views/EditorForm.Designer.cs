@@ -48,7 +48,11 @@
             this._statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._statusStrip = new System.Windows.Forms.StatusStrip();
+            this._toolStripStatusLabelFontSize = new System.Windows.Forms.ToolStripStatusLabel();
+            this._toolStripStatusLabelLineColumn = new System.Windows.Forms.ToolStripStatusLabel();
             this._menuStripMainMenu.SuspendLayout();
+            this._statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // _richTextBoxTextContent
@@ -61,9 +65,11 @@
             this._richTextBoxTextContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._richTextBoxTextContent.Location = new System.Drawing.Point(0, 30);
             this._richTextBoxTextContent.Name = "_richTextBoxTextContent";
-            this._richTextBoxTextContent.Size = new System.Drawing.Size(702, 402);
+            this._richTextBoxTextContent.Size = new System.Drawing.Size(702, 374);
             this._richTextBoxTextContent.TabIndex = 0;
             this._richTextBoxTextContent.Text = "";
+            this._richTextBoxTextContent.WordWrap = false;
+            this._richTextBoxTextContent.SelectionChanged += new System.EventHandler(this.RichTextBoxTextContent_SelectionChanged);
             // 
             // _menuStripMainMenu
             // 
@@ -103,7 +109,7 @@
             this._newFileToolStripMenuItem.Name = "_newFileToolStripMenuItem";
             this._newFileToolStripMenuItem.ShortcutKeyDisplayString = "";
             this._newFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this._newFileToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this._newFileToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
             this._newFileToolStripMenuItem.Text = "Новый файл...";
             this._newFileToolStripMenuItem.Click += new System.EventHandler(this.NewFileToolStripMenuItem_Click);
             // 
@@ -111,7 +117,8 @@
             // 
             this._openFileToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this._openFileToolStripMenuItem.Name = "_openFileToolStripMenuItem";
-            this._openFileToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this._openFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this._openFileToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
             this._openFileToolStripMenuItem.Text = "Открыть файл...";
             this._openFileToolStripMenuItem.Click += new System.EventHandler(this.OpenFileToolStripMenuItem_Click);
             // 
@@ -119,7 +126,8 @@
             // 
             this._saveAsToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this._saveAsToolStripMenuItem.Name = "_saveAsToolStripMenuItem";
-            this._saveAsToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this._saveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this._saveAsToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
             this._saveAsToolStripMenuItem.Text = "Сохранить как...";
             this._saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
             // 
@@ -127,7 +135,8 @@
             // 
             this._exitToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this._exitToolStripMenuItem.Name = "_exitToolStripMenuItem";
-            this._exitToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this._exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this._exitToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
             this._exitToolStripMenuItem.Text = "Выйти";
             this._exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -145,21 +154,24 @@
             // _findToolStripMenuItem
             // 
             this._findToolStripMenuItem.Name = "_findToolStripMenuItem";
-            this._findToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this._findToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+            this._findToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
             this._findToolStripMenuItem.Text = "Найти";
             this._findToolStripMenuItem.Click += new System.EventHandler(this.FindToolStripMenuItem_Click);
             // 
             // _replaceToolStripMenuItem
             // 
             this._replaceToolStripMenuItem.Name = "_replaceToolStripMenuItem";
-            this._replaceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this._replaceToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this._replaceToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
             this._replaceToolStripMenuItem.Text = "Заменить";
             this._replaceToolStripMenuItem.Click += new System.EventHandler(this.ReplaceToolStripMenuItem_Click);
             // 
             // _dateTimeToolStripMenuItem
             // 
             this._dateTimeToolStripMenuItem.Name = "_dateTimeToolStripMenuItem";
-            this._dateTimeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this._dateTimeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this._dateTimeToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
             this._dateTimeToolStripMenuItem.Text = "Дата/Время";
             this._dateTimeToolStripMenuItem.Click += new System.EventHandler(this.DateTimeToolStripMenuItem_Click);
             // 
@@ -186,6 +198,7 @@
             this._wordWrapToolStripMenuItem.Name = "_wordWrapToolStripMenuItem";
             this._wordWrapToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
             this._wordWrapToolStripMenuItem.Text = "Перенос слов";
+            this._wordWrapToolStripMenuItem.CheckedChanged += new System.EventHandler(this.WordWrapToolStripMenuItem_CheckedChanged);
             // 
             // _viewToolStripMenuItem
             // 
@@ -201,20 +214,28 @@
             // _zoomInToolStripMenuItem
             // 
             this._zoomInToolStripMenuItem.Name = "_zoomInToolStripMenuItem";
-            this._zoomInToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
+            this._zoomInToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this._zoomInToolStripMenuItem.Size = new System.Drawing.Size(222, 26);
             this._zoomInToolStripMenuItem.Text = "Увеличить";
+            this._zoomInToolStripMenuItem.Click += new System.EventHandler(this.ZoomInToolStripMenuItem_Click);
             // 
             // _zoomOutToolStripMenuItem
             // 
             this._zoomOutToolStripMenuItem.Name = "_zoomOutToolStripMenuItem";
-            this._zoomOutToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
+            this._zoomOutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this._zoomOutToolStripMenuItem.Size = new System.Drawing.Size(222, 26);
             this._zoomOutToolStripMenuItem.Text = "Уменьшить";
+            this._zoomOutToolStripMenuItem.Click += new System.EventHandler(this.ZoomOutToolStripMenuItem_Click);
             // 
             // _statusBarToolStripMenuItem
             // 
+            this._statusBarToolStripMenuItem.Checked = true;
+            this._statusBarToolStripMenuItem.CheckOnClick = true;
+            this._statusBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this._statusBarToolStripMenuItem.Name = "_statusBarToolStripMenuItem";
-            this._statusBarToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
+            this._statusBarToolStripMenuItem.Size = new System.Drawing.Size(222, 26);
             this._statusBarToolStripMenuItem.Text = "Панель состояния";
+            this._statusBarToolStripMenuItem.CheckedChanged += new System.EventHandler(this.StatusBarToolStripMenuItem_CheckedChanged);
             // 
             // _helpToolStripMenuItem
             // 
@@ -230,19 +251,50 @@
             this._aboutToolStripMenuItem.Name = "_aboutToolStripMenuItem";
             this._aboutToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
             this._aboutToolStripMenuItem.Text = "О программе";
+            this._aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
+            // 
+            // _statusStrip
+            // 
+            this._statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this._statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._toolStripStatusLabelFontSize,
+            this._toolStripStatusLabelLineColumn});
+            this._statusStrip.Location = new System.Drawing.Point(0, 407);
+            this._statusStrip.Name = "_statusStrip";
+            this._statusStrip.Size = new System.Drawing.Size(702, 26);
+            this._statusStrip.TabIndex = 2;
+            this._statusStrip.Text = "statusStrip1";
+            // 
+            // _toolStripStatusLabelFontSize
+            // 
+            this._toolStripStatusLabelFontSize.AccessibleName = "";
+            this._toolStripStatusLabelFontSize.Name = "_toolStripStatusLabelFontSize";
+            this._toolStripStatusLabelFontSize.Size = new System.Drawing.Size(0, 20);
+            // 
+            // _toolStripStatusLabelLineColumn
+            // 
+            this._toolStripStatusLabelLineColumn.Name = "_toolStripStatusLabelLineColumn";
+            this._toolStripStatusLabelLineColumn.Size = new System.Drawing.Size(147, 20);
+            this._toolStripStatusLabelLineColumn.Text = "Строка 1, Колонка 1";
             // 
             // EditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(702, 433);
+            this.Controls.Add(this._statusStrip);
             this.Controls.Add(this._richTextBoxTextContent);
             this.Controls.Add(this._menuStripMainMenu);
             this.MainMenuStrip = this._menuStripMainMenu;
+            this.MinimumSize = new System.Drawing.Size(720, 480);
             this.Name = "EditorForm";
             this.Text = "Текстовый редактор";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditorForm_FormClosing);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EditorForm_KeyDown);
             this._menuStripMainMenu.ResumeLayout(false);
             this._menuStripMainMenu.PerformLayout();
+            this._statusStrip.ResumeLayout(false);
+            this._statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,5 +322,8 @@
         private ToolStripMenuItem _formatToolStripMenuItem;
         private ToolStripMenuItem _fontToolStripMenuItem;
         private ToolStripMenuItem _wordWrapToolStripMenuItem;
+        private StatusStrip _statusStrip;
+        private ToolStripStatusLabel _toolStripStatusLabelFontSize;
+        private ToolStripStatusLabel _toolStripStatusLabelLineColumn;
     }
 }

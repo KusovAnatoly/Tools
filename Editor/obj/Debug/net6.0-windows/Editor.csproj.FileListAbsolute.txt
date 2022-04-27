@@ -16,3 +16,4 @@ C:\Users\Anatoly\source\repos\Tools\Editor\obj\Debug\net6.0-windows\ref\Editor.d
 C:\Users\Anatoly\source\repos\Tools\Editor\obj\Debug\net6.0-windows\Editor.Views.EditorForm.resources
 C:\Users\Anatoly\source\repos\Tools\Editor\obj\Debug\net6.0-windows\Editor.csproj.GenerateResource.cache
 C:\Users\Anatoly\source\repos\Tools\Editor\obj\Debug\net6.0-windows\Editor.Views.FindForm.resources
+C:\Users\Anatoly\source\repos\Tools\Editor\obj\Debug\net6.0-windows\Editor.Views.AboutForm.resources

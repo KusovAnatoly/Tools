@@ -35,6 +35,7 @@
             this._checkBoxMatchCase = new System.Windows.Forms.CheckBox();
             this._textBoxReplace = new System.Windows.Forms.TextBox();
             this._labelReplace = new System.Windows.Forms.Label();
+            this._buttonReplace = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // _labelText
@@ -58,7 +59,7 @@
             this._buttonNext.Location = new System.Drawing.Point(369, 10);
             this._buttonNext.Name = "_buttonNext";
             this._buttonNext.Size = new System.Drawing.Size(108, 29);
-            this._buttonNext.TabIndex = 2;
+            this._buttonNext.TabIndex = 4;
             this._buttonNext.Text = "Следующее";
             this._buttonNext.UseVisualStyleBackColor = true;
             this._buttonNext.Click += new System.EventHandler(this.ButtonNext_Click);
@@ -68,7 +69,7 @@
             this._buttonCancel.Location = new System.Drawing.Point(369, 45);
             this._buttonCancel.Name = "_buttonCancel";
             this._buttonCancel.Size = new System.Drawing.Size(108, 29);
-            this._buttonCancel.TabIndex = 3;
+            this._buttonCancel.TabIndex = 5;
             this._buttonCancel.Text = "Отмена";
             this._buttonCancel.UseVisualStyleBackColor = true;
             this._buttonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
@@ -79,7 +80,7 @@
             this._checkBoxMatchCase.Location = new System.Drawing.Point(12, 167);
             this._checkBoxMatchCase.Name = "_checkBoxMatchCase";
             this._checkBoxMatchCase.Size = new System.Drawing.Size(162, 24);
-            this._checkBoxMatchCase.TabIndex = 4;
+            this._checkBoxMatchCase.TabIndex = 3;
             this._checkBoxMatchCase.Text = "Учитывать регистр";
             this._checkBoxMatchCase.UseVisualStyleBackColor = true;
             // 
@@ -88,7 +89,7 @@
             this._textBoxReplace.Location = new System.Drawing.Point(97, 47);
             this._textBoxReplace.Name = "_textBoxReplace";
             this._textBoxReplace.Size = new System.Drawing.Size(266, 27);
-            this._textBoxReplace.TabIndex = 6;
+            this._textBoxReplace.TabIndex = 2;
             // 
             // _labelReplace
             // 
@@ -99,12 +100,25 @@
             this._labelReplace.TabIndex = 5;
             this._labelReplace.Text = "Заменить:";
             // 
+            // _buttonReplace
+            // 
+            this._buttonReplace.Enabled = false;
+            this._buttonReplace.Location = new System.Drawing.Point(369, 11);
+            this._buttonReplace.Name = "_buttonReplace";
+            this._buttonReplace.Size = new System.Drawing.Size(108, 29);
+            this._buttonReplace.TabIndex = 4;
+            this._buttonReplace.Text = "Заменить";
+            this._buttonReplace.UseVisualStyleBackColor = true;
+            this._buttonReplace.Visible = false;
+            this._buttonReplace.Click += new System.EventHandler(this.ButtonReplace_Click);
+            // 
             // FindForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(482, 203);
+            this.Controls.Add(this._buttonReplace);
             this.Controls.Add(this._textBoxReplace);
             this.Controls.Add(this._labelReplace);
             this.Controls.Add(this._checkBoxMatchCase);
@@ -135,5 +149,6 @@
         private CheckBox _checkBoxMatchCase;
         private TextBox _textBoxReplace;
         private Label _labelReplace;
+        private Button _buttonReplace;
     }
 }

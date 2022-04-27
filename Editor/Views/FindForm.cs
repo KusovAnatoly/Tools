@@ -1,4 +1,5 @@
 ﻿using Editor.Utils;
+using System.Globalization;
 
 namespace Editor.Views
 {
@@ -15,10 +16,15 @@ namespace Editor.Views
             switch (type)
             {
                 case WindowType.Find:
+                    _buttonReplace.Visible = false;
+                    _buttonReplace.Enabled = false;
                     _textBoxReplace.Visible = false;
                     _labelReplace.Visible = false;
                     break;
                 case WindowType.Replace:
+                    Text = "Заменить";
+                    _buttonReplace.Visible = true;
+                    _buttonReplace.Enabled = true;
                     _textBoxReplace.Visible = true;
                     _labelReplace.Visible = true;
                     break;
@@ -54,9 +60,29 @@ namespace Editor.Views
             }
         }
 
+        private void Replace(string findWord, string replaceWord)
+        {
+            /*
+             1. Найти слово
+             2. Узнать его положение
+             3. Разделить текст на до и после
+             4. Вставить новое слово вместо предыдыщего
+             5. Поместить текст в контрол
+             */
+
+            RichTextBoxTextContent.Text = RichTextBoxTextContent.Text.Replace(findWord, replaceWord);
+        }
+
         private void FindForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void ButtonReplace_Click(object sender, EventArgs e)
+        {
+            Replace(_textBoxFind.Text, _textBoxReplace.Text);
+            _indexQty++;
+            EditorForm.Focus();
         }
     }
 }

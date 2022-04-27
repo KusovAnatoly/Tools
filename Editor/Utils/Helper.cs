@@ -29,9 +29,9 @@ namespace Editor.Utils
             var indexes = new List<int>();
             for (int index = 0; ; index += value.Length)
             {
-                if (!isCaseSensitive)
+                if (isCaseSensitive)
                 {
-                    index = aString.IndexOf(value, index, StringComparison.InvariantCultureIgnoreCase);
+                    index = aString.IndexOf(value, index, StringComparison.OrdinalIgnoreCase);
                 }
                 else
                 {
